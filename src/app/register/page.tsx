@@ -208,7 +208,7 @@ function RegisterForm() {
                   </div>
                   <div className="space-y-2">
                     <Label>Password</Label>
-                    <Input name="password" type="password" value={formData.password} onChange={handleChange} placeholder="••••••••" minLength={6} className="h-12 rounded-xl" />
+                    <Input name="password" type="password" value={formData.password} onChange={handleChange} placeholder="At least 6 characters long" minLength={6} className="h-12 rounded-xl" />
                   </div>
                   
                   <div className="relative my-6">
