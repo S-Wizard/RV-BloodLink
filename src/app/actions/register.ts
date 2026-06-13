@@ -18,6 +18,9 @@ export async function createUserRecord(userData: any) {
   
   if (error) {
     console.error("Error creating user record:", error)
+    if (error.code === '23505') {
+      return { error: "This email address is already registered." }
+    }
     return { error: error.message }
   }
 

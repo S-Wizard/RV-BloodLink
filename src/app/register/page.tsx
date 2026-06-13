@@ -50,8 +50,13 @@ function RegisterForm() {
 
   const handleNext = () => {
     setError(null)
-    if (step === 1 && (!formData.fullName || !formData.email || !formData.password)) {
-      return setError("Please fill all fields")
+    if (step === 1) {
+      if (!formData.fullName || !formData.email || !formData.password) {
+        return setError("Please fill all fields")
+      }
+      if (formData.password.length < 6) {
+        return setError("Password must be at least 6 characters long")
+      }
     }
     if (step === 2 && !formData.role) {
       return setError("Please select a role")
@@ -203,7 +208,7 @@ function RegisterForm() {
                   </div>
                   <div className="space-y-2">
                     <Label>Password</Label>
-                    <Input name="password" type="password" value={formData.password} onChange={handleChange} placeholder="••••••••" className="h-12 rounded-xl" />
+                    <Input name="password" type="password" value={formData.password} onChange={handleChange} placeholder="••••••••" minLength={6} className="h-12 rounded-xl" />
                   </div>
                   
                   <div className="relative my-6">
