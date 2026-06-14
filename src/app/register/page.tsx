@@ -201,11 +201,11 @@ function RegisterForm() {
                 <div className="space-y-4">
                   <div className="space-y-2">
                     <Label>Full Name</Label>
-                    <Input name="fullName" value={formData.fullName} onChange={handleChange} placeholder="John Doe" className="h-12 rounded-xl" />
+                    <Input name="fullName" value={formData.fullName} onChange={handleChange} placeholder="Name" className="h-12 rounded-xl" />
                   </div>
                   <div className="space-y-2">
                     <Label>Email</Label>
-                    <Input name="email" type="email" value={formData.email} onChange={handleChange} placeholder="john@example.com" className="h-12 rounded-xl" />
+                    <Input name="email" type="email" value={formData.email} onChange={handleChange} placeholder="name@example.com" className="h-12 rounded-xl" />
                   </div>
                   <div className="space-y-2">
                     <Label>Password</Label>

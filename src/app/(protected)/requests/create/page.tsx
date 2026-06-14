@@ -16,7 +16,7 @@ export default function CreateRequestPage() {
   const [step, setStep] = useState(1)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  
+
   const [formData, setFormData] = useState({
     blood_group: "",
     units_required: "1",
@@ -133,7 +133,7 @@ export default function CreateRequestPage() {
 
         {/* Progress Bar */}
         <div className="w-full h-2 bg-secondary mb-8 rounded-full overflow-hidden">
-          <motion.div 
+          <motion.div
             className="h-full bg-primary"
             initial={{ width: 0 }}
             animate={{ width: `${(step / 6) * 100}%` }}
@@ -163,7 +163,7 @@ export default function CreateRequestPage() {
                     <Label className="text-base">Required Blood Group</Label>
                     <div className="grid grid-cols-4 gap-3">
                       {bloodGroups.map((bg) => (
-                        <div 
+                        <div
                           key={bg}
                           onClick={() => setFormData(prev => ({ ...prev, blood_group: bg }))}
                           className={`p-4 rounded-xl border-2 text-center font-bold text-lg cursor-pointer transition-all ${formData.blood_group === bg ? "border-primary bg-primary text-white shadow-lg shadow-red-500/30 scale-105" : "border-border hover:border-primary/50 bg-background"}`}
@@ -185,18 +185,18 @@ export default function CreateRequestPage() {
                 <div className="space-y-4">
                   <div className="space-y-2">
                     <Label>Patient Full Name</Label>
-                    <Input name="patient_name" value={formData.patient_name} onChange={handleChange} className="h-12 rounded-xl" placeholder="e.g. John Doe" />
+                    <Input name="patient_name" value={formData.patient_name} onChange={handleChange} className="h-12 rounded-xl" placeholder="Name" />
                   </div>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label>Age</Label>
-                      <Input name="patient_age" type="number" min="0" value={formData.patient_age} onChange={handleChange} className="h-12 rounded-xl" placeholder="e.g. 45" />
+                      <Input name="patient_age" type="number" min="0" value={formData.patient_age} onChange={handleChange} className="h-12 rounded-xl" placeholder="Enter Age" />
                     </div>
                     <div className="space-y-2">
                       <Label>Gender</Label>
-                      <select 
-                        name="patient_gender" 
-                        value={formData.patient_gender} 
+                      <select
+                        name="patient_gender"
+                        value={formData.patient_gender}
                         onChange={handleChange}
                         className="w-full h-12 px-3 rounded-xl border border-input bg-background"
                       >
@@ -224,8 +224,8 @@ export default function CreateRequestPage() {
                   <div className="space-y-6">
                     <div className="space-y-2">
                       <Label>Hospital Locality / Area</Label>
-                      <LocalitySelector 
-                        value={formData.locality} 
+                      <LocalitySelector
+                        value={formData.locality}
                         onChange={(val) => setFormData(prev => ({ ...prev, locality: val }))}
                       />
                     </div>
@@ -272,14 +272,13 @@ export default function CreateRequestPage() {
                         { level: "Urgent", color: "border-orange-200 hover:border-orange-500", bg: "bg-orange-50 text-orange-700" },
                         { level: "Critical", color: "border-red-200 hover:border-red-500", bg: "bg-red-50 text-red-700 font-bold" }
                       ].map((p) => (
-                        <div 
+                        <div
                           key={p.level}
                           onClick={() => setFormData(prev => ({ ...prev, priority: p.level }))}
-                          className={`p-4 rounded-xl border-2 text-center cursor-pointer transition-all ${
-                            formData.priority === p.level 
-                              ? `border-opacity-100 shadow-md ${p.bg}` 
-                              : `border-border ${p.color} bg-background`
-                          }`}
+                          className={`p-4 rounded-xl border-2 text-center cursor-pointer transition-all ${formData.priority === p.level
+                            ? `border-opacity-100 shadow-md ${p.bg}`
+                            : `border-border ${p.color} bg-background`
+                            }`}
                         >
                           {p.level}
                         </div>
@@ -288,12 +287,12 @@ export default function CreateRequestPage() {
                   </div>
                   <div className="space-y-2 pt-2">
                     <Label>Additional Information / Notes <span className="text-muted-foreground font-normal">(Optional)</span></Label>
-                    <textarea 
-                      name="notes" 
-                      value={formData.notes} 
-                      onChange={handleChange} 
-                      className="w-full min-h-[100px] p-3 rounded-xl border border-input bg-background resize-y" 
-                      placeholder="Any specific requirements, exact ward numbers, or instructions for the donor." 
+                    <textarea
+                      name="notes"
+                      value={formData.notes}
+                      onChange={handleChange}
+                      className="w-full min-h-[100px] p-3 rounded-xl border border-input bg-background resize-y"
+                      placeholder="Any specific requirements, exact ward numbers, or instructions for the donor."
                     />
                   </div>
                 </div>
@@ -302,12 +301,11 @@ export default function CreateRequestPage() {
               {/* Step 6: Review */}
               {step === 6 && (
                 <div className="space-y-6">
-                  <div className={`p-6 rounded-2xl border-2 ${
-                    formData.priority === 'Critical' ? 'bg-red-50 border-red-200 dark:bg-red-950/20 dark:border-red-900/50' : 
-                    formData.priority === 'Urgent' ? 'bg-orange-50 border-orange-200 dark:bg-orange-950/20 dark:border-orange-900/50' : 
-                    'bg-secondary border-transparent'
-                  }`}>
-                    
+                  <div className={`p-6 rounded-2xl border-2 ${formData.priority === 'Critical' ? 'bg-red-50 border-red-200 dark:bg-red-950/20 dark:border-red-900/50' :
+                    formData.priority === 'Urgent' ? 'bg-orange-50 border-orange-200 dark:bg-orange-950/20 dark:border-orange-900/50' :
+                      'bg-secondary border-transparent'
+                    }`}>
+
                     <div className="flex justify-between items-center mb-6 pb-4 border-b border-border/50">
                       <div>
                         <p className="text-sm font-medium text-muted-foreground mb-1">Requirement</p>
@@ -326,19 +324,18 @@ export default function CreateRequestPage() {
                       </div>
                       <div className="flex justify-between">
                         <span className="text-muted-foreground text-sm">Hospital</span>
-                        <span className="font-semibold text-sm text-right max-w-[200px]">{formData.hospital_name}<br/>{formData.locality}, {formData.city}</span>
+                        <span className="font-semibold text-sm text-right max-w-[200px]">{formData.hospital_name}<br />{formData.locality}, {formData.city}</span>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-muted-foreground text-sm">Contact</span>
-                        <span className="font-semibold text-sm text-right">{formData.contact_name}<br/>{formData.contact_number}</span>
+                        <span className="font-semibold text-sm text-right">{formData.contact_name}<br />{formData.contact_number}</span>
                       </div>
                       <div className="flex justify-between pt-2 border-t border-border/50">
                         <span className="text-muted-foreground text-sm font-medium mt-1">Priority</span>
-                        <span className={`px-3 py-1 rounded-full text-xs font-bold ${
-                          formData.priority === 'Critical' ? 'bg-red-100 text-red-700' : 
-                          formData.priority === 'Urgent' ? 'bg-orange-100 text-orange-700' : 
-                          'bg-blue-100 text-blue-700'
-                        }`}>
+                        <span className={`px-3 py-1 rounded-full text-xs font-bold ${formData.priority === 'Critical' ? 'bg-red-100 text-red-700' :
+                          formData.priority === 'Urgent' ? 'bg-orange-100 text-orange-700' :
+                            'bg-blue-100 text-blue-700'
+                          }`}>
                           {formData.priority}
                         </span>
                       </div>
